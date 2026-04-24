@@ -1,0 +1,33 @@
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "email": "admin@gmail.com",
+  "password": "123",
+  "bi": "123456789"
+}
+
+###
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+  "email": "erildo@gmail.com",
+  "password": "12345678"
+}
+
+###
+GET http://localhost:3333/me
+
+###
+POST http://localhost:3333/logout
+
+###
+GET http://localhost:3333/products
+
+###
+DELETE http://localhost:3333/product/1
+
+###
+GET http://localhost:3333/cartItems
