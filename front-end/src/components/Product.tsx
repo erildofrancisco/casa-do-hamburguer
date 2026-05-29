@@ -1,5 +1,5 @@
 import { ShoppingCart } from "lucide-react";
-import type { ProductType } from "../types/Product";
+import type { ProductProps } from "../types/Product";
 import { formatterPrice } from "../utils/formatter";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
@@ -9,16 +9,16 @@ export function Product({
   name,
   description,
   price,
-  image,
+  img,
   category,
   setProducts,
-}: ProductType) {
+}: ProductProps) {
   const { user } = useContext(UserContext);
 
-  const handleDeletProduct = async (id: number) => {
+  const handleDeletProduct = async (id: string) => {
     try {
       if (!id) {
-        console.log("ID nao enoviado");
+        console.log("ID não enviado");
         return;
       }
       const response = await fetch(`http://localhost:3333/product/${id}`, {
@@ -26,20 +26,21 @@ export function Product({
         credentials: "include",
       });
       if (!response.ok) {
-        console.log("Erro ao realizar a requisicao");
+        console.log("Erro ao realizar a requisicão");
         return;
       }
-      getProducts();
+      getProduct();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return;
     }
   };
 
-  const getProducts = async () => {
+  const getProduct = async () => {
     try {
       const response = await fetch("http://localhost:3333/products");
       const data = await response.json();
+      
       setProducts(data);
     } catch (error) {
       console.log(error);
@@ -51,9 +52,9 @@ export function Product({
     <div>
       <div className="flex gap-2">
         <img
-          src={image}
+          src={img}
           alt=""
-          className="h-[83px] w-[100px] md:h-[166px] md:w-[200px]"
+          className="h-20.75 w-25 md:h-41.5 md:w-50"
         />
         <div className="flex w-full flex-col">
           <div className="flex items-center justify-between">

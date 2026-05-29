@@ -5,7 +5,8 @@ export const getProducts = async (request: Request, response: Response) => {
   try {
     const products = await prisma.product.findMany();
     if (products.length === 0) {
-      response.status(404).json({ message: "Nenhum produto encontrado" });
+      response.status(200).json({ message: "Não foram encontrados produtos" });
+      //response.json([]);
       return;
     }
     response.json(products);
@@ -20,7 +21,7 @@ export const deleteProduct = async (request: Request, response: Response) => {
     const { user } = request;
     const { id } = request.params;
     if (!user.admin) {
-      response.status(400).json({ message: "Usuario nao autorizado" });
+      response.status(400).json({ message: "Usuario não autorizado" });
       return;
     }
     if (!id) {
@@ -28,7 +29,7 @@ export const deleteProduct = async (request: Request, response: Response) => {
       return;
     }
     const deletedProduct = await prisma.product.delete({
-      where: { id: Number(id) },
+      where: { id: String(id) },
     });
     if (!deletedProduct) {
       response.status(404).json({ message: "Erro ao deletar o produto" });

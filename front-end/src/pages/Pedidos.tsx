@@ -21,7 +21,7 @@ export function Pedidos() {
   };
 
   return (
-    <div className="mx-auto w-full px-3 text-white md:w-[737px] md:px-0">
+    <div className="mx-auto w-full px-3 text-white md:w-184.25 md:px-0">
       <div className="my-1 flex gap-2 md:my-3">
         <div
           className={getcategoryClass("Pendentes")}

@@ -19,20 +19,20 @@ export function Register() {
         return;
       }
       if (password !== confirmPassword) {
-        setError("As senhas nao coincidem!");
+        setError("As senhas não coincidem!");
         return;
       }
-      const response = await fetch("http://localhost:3333", {
+      const response = await fetch("http://localhost:3333/register", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ name, email, password, bi }),
       });
       switch (response.status) {
         case 409:
-          setError("E-mail ja cadastrado!");
+          setError("E-mail já cadastrado!");
           break;
         case 400:
-          setError("Todas as informacoes sao obrigatorias!");
+          setError("Todas as informações são obrigatorias!");
           break;
         case 201:
           setName("");
@@ -49,6 +49,7 @@ export function Register() {
           setError("");
       }
       const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.log(error);
       return;

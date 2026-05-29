@@ -4,7 +4,7 @@ import { authMiddleware } from "./middlewares/auth.js";
 import { deleteProduct, getProducts } from "./controller/product-controller.js";
 import { getCartItems } from "./controller/cartItem-controller.js";
 
-export const routes = Router();
+const routes: ReturnType<typeof Router> = Router();
 
 routes.post("/login", login);
 routes.post("/register", register);
@@ -15,3 +15,5 @@ routes.get("/products", getProducts);
 routes.delete("/product/:id", authMiddleware, deleteProduct);
 
 routes.get("/cartItems", authMiddleware, getCartItems);
+
+export { routes };

@@ -13,14 +13,13 @@ export const login = async (request: Request, response: Response) => {
     const user = await prisma.user.findFirst({
       where: { email },
     });
-
     if (!user) {
       response.status(404).json({ message: "Usuário não encontrado" });
       return;
     }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      response.status(401).json({ message: "Usuario nao encontrado" });
+      response.status(401).json({ message: "Usuario não encontrado" });
       return;
     }
     const userInfos = {
@@ -88,7 +87,9 @@ export const auth = async (request: Request, response: Response) => {
 
 export const logout = (request: Request, response: Response) => {
   const { user } = request.cookies;
+
   if (user) {
-    return response.clearCookie("user");
+    response.clearCookie("user");
+    response.json({ message: "Usuário deslogado" });
   }
 };

@@ -14,6 +14,7 @@ app.use(
   }),
 );
 app.use(routes);
+
 connection();
 
 app.listen(3333, () => {

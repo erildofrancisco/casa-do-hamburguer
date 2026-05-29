@@ -26,18 +26,22 @@ export function Home() {
     try {
       const response = await fetch("http://localhost:3333/products");
       const data = await response.json();
-      setProducts(data);
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        setProducts([]);
+      }
     } catch (error) {
       console.log(error);
+      setProducts([]);
       return;
     }
   };
-
   /**
    * para filtrar productos por categoria eu nem preciso
    * fazer chamadas a api, posso apenas manipular o array
    */
-  const filteredProducts = products.filter((product) => {
+  const filteredProduct = products.filter((product) => {
     return product.category === category;
   });
 
@@ -47,7 +51,7 @@ export function Home() {
   }, []);
 
   return (
-    <div className="mx-auto w-full px-3 md:w-[737px] md:px-0">
+    <div className="mx-auto w-full px-3 md:w-184.25 md:px-0">
       <div className="my-1 flex gap-2 md:my-3">
         <div
           className={getCategoryClass("Hambuguers")}
@@ -71,19 +75,19 @@ export function Home() {
 
       <p className="mt-2 mb-2 font-bold text-[#F2DAAC] uppercase">{category}</p>
       <div className="flex flex-col gap-2 md:gap-3">
-        {filteredProducts.map((product) => (
+        {filteredProduct.map((product) => (
           <Product
             key={product.id}
             id={product.id}
             name={product.name}
             description={product.description}
             price={product.price}
-            image={product.image}
+            img={product.img}
             category={product.category}
             setProducts={setProducts}
           />
         ))}
-        {filteredProducts.length === 0 && (
+        {filteredProduct.length === 0 && (
           <p className="text-white">Não há produto para essa categoria</p>
         )}
       </div>
