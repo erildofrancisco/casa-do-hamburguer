@@ -2,8 +2,8 @@ import { Button } from "./Button";
 import type React from "react";
 import { CartItems } from "./CartItems";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
-import type { CartItem } from "../types/CartItem";
+import { useContext, useEffect } from "react";
+import { CartItemContext } from "../contexts/CartItemsContext";
 
 type cartProps = {
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,7 +11,8 @@ type cartProps = {
 };
 
 export const Cart = ({ setShowCart, showCart }: cartProps) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const { cartItems, setCartItems } = useContext(CartItemContext);
+
   const getCartItems = async () => {
     try {
       const response = await fetch("http://localhost:3333/cartItems", {
@@ -34,7 +35,7 @@ export const Cart = ({ setShowCart, showCart }: cartProps) => {
   }, []);
 
   return (
-    <div className="absolute right-0 z-10 flex h-screen w-[375px] flex-col bg-[#F2DAAC] p-5">
+    <div className="absolute right-0 z-10 flex h-screen w-93.75 flex-col bg-[#F2DAAC] p-5">
       <div className="flex justify-between">
         <X className="cursor-pointer" onClick={() => setShowCart(!showCart)} />
         <p className="font-bold uppercase">Meu carrinho</p>

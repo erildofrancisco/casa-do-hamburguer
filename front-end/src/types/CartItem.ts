@@ -1,8 +1,13 @@
 import type { ProductType } from "./Product";
 
-export type CartItem = {
+export type CartItemType = {
   id: string;
   userId: string;
   productId: string;
   product: ProductType;
+};
+
+export type CartItemsContextType = {
+  cartItems: CartItemType[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>;
 };

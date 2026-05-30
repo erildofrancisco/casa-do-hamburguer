@@ -16,7 +16,7 @@ export const CartItems = ({ name, price, img, id }: cartItemsProps) => {
         credentials: "include",
       });
       if (!response.ok) {
-        console.log("Erro ao realizar a requisicao");
+        console.log("Erro ao realizar a requisicão");
         return;
       }
       const data = await response.json();
@@ -28,7 +28,7 @@ export const CartItems = ({ name, price, img, id }: cartItemsProps) => {
 
   return (
     <div className="flex items-center gap-3">
-      <img src={img} alt={name} className="w-[100px] rounded-md" />
+      <img src={img} alt={name} className="w-25 rounded-md" />
 
       <div className="flex-1">
         <p className="text-sm font-bold uppercase">{name}</p>

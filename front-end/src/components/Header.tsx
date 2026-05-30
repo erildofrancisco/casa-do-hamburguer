@@ -3,9 +3,11 @@ import { Link, useLocation } from "react-router";
 import { UserContext } from "../contexts/UserContext";
 import { Box, LayoutDashboard, LogOut, Plus, ShoppingCart } from "lucide-react";
 import { Cart } from "./Cart";
+import { CartItemContext } from "../contexts/CartItemsContext";
 
 export function Header() {
   const { user, setUser } = useContext(UserContext);
+  const { cartItems } = useContext(CartItemContext);
   const [showCart, setShowCart] = useState<boolean>(false);
   const location = useLocation();
 
@@ -59,7 +61,7 @@ export function Header() {
   return (
     <div className="bg-[#161410]">
       {showCart && <Cart setShowCart={setShowCart} showCart={showCart} />}
-      <div className="mx-auto flex w-full items-center justify-between p-3 md:w-[737px] md:p-0">
+      <div className="mx-auto flex w-full items-center justify-between p-3 md:w-184.25 md:p-0">
         <Link to="/">
           <img src="/logo.png" alt="" />
         </Link>
@@ -77,7 +79,7 @@ export function Header() {
                     <LayoutDashboard size={18} />
                   </div>
                 </Link>
-                <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-md border">
+                <div className="flex h-8.75 w-8.75 cursor-pointer items-center justify-center rounded-md border">
                   <Plus size={18} />
                 </div>
               </div>
@@ -85,7 +87,7 @@ export function Header() {
             <div className="relative cursor-pointer">
               <ShoppingCart size={18} onClick={() => setShowCart(!showCart)} />
               <p className="absolute -top-4 -right-4 flex h-5 w-5 items-center justify-center rounded-full bg-[#F2DAAC] text-[#161410]">
-                1
+                {cartItems.length}
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -99,7 +101,7 @@ export function Header() {
           </div>
         ) : (
           <Link to="/login">
-            <div className="flex h-[35px] w-[130px] cursor-pointer items-center justify-center rounded-sm bg-[#F2DAAC]">
+            <div className="flex h-8.75 w-32.5 cursor-pointer items-center justify-center rounded-sm bg-[#F2DAAC]">
               Entrar
             </div>
           </Link>
