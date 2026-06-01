@@ -44,12 +44,12 @@ export const login = async (request: Request, response: Response) => {
 };
 
 export const register = async (request: Request, response: Response) => {
-  const { name, email, password, bi } = request.body;
+  const { name, email, password, bi, admin } = request.body;
   try {
     if (!name || !email || !password || !bi) {
       response
         .status(400)
-        .json({ message: "Todas as informacoes sao obrigatorias" });
+        .json({ message: "Todas as informaçoes sao obrigatorias" });
       return;
     }
     const hash = await bcrypt.hash(password, 10);
@@ -66,6 +66,7 @@ export const register = async (request: Request, response: Response) => {
         email,
         password: hash,
         bi,
+        admin: admin || false,
       },
     });
     response.status(201).json(newUser);

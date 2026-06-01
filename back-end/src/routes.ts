@@ -2,7 +2,7 @@ import { Router } from "express";
 import { auth, login, logout, register } from "./controller/user-controller.js";
 import { authMiddleware } from "./middlewares/auth.js";
 import { deleteProduct, getProducts } from "./controller/product-controller.js";
-import { getCartItems } from "./controller/cartItem-controller.js";
+import { getCartItems, createCartItem } from "./controller/cartItem-controller.js";
 
 const routes: ReturnType<typeof Router> = Router();
 
@@ -15,5 +15,6 @@ routes.get("/products", getProducts);
 routes.delete("/product/:id", authMiddleware, deleteProduct);
 
 routes.get("/cartItems", authMiddleware, getCartItems);
+routes.post("/cartItems", authMiddleware, createCartItem);
 
 export { routes };

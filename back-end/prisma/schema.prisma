@@ -35,6 +35,7 @@ model Product {
 
 model CartItem {
   id        String @id @default(uuid())
+  quantity  Int    @default(1)
   userId    String
   productId String
 

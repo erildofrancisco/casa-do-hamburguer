@@ -2,10 +2,11 @@ POST http://localhost:3333/register
 Content-Type: application/json
 
 {
-  "name": "admin",
-  "email": "admin@gmail.com",
+  "name": "admin3",
+  "email": "admin3@gmail.com",
   "password": "123",
-  "bi": "123456789"
+  "bi": "123456789",
+  "admin": true
 }
 
 ###
