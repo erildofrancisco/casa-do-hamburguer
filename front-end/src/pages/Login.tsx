@@ -15,7 +15,7 @@ export function Login() {
     e.preventDefault();
     try {
       if (!email || !password) {
-        setError("E-mail e senha sao obrigatorios");
+        setError("E-mail e Senha são obrigatorios");
         return;
       }
       const response = await fetch("http://localhost:3333/login", {
@@ -25,11 +25,11 @@ export function Login() {
         credentials: "include",
       });
       if (response.status === 404) {
-        setError("Usuario nao encontrado");
+        setError("E-mail ou senha incorretos");
         return;
       }
       if (response.status === 400) {
-        setError("Usuario e senha sao obrigatorios");
+        setError("E-mail e Senha são obrigatorios");
         return;
       }
       if (response.status === 401) {
