@@ -8,7 +8,7 @@ export const authMiddleware = (
 ) => {
   const { user } = request.cookies;
   if (!process.env.JWT_SECRET) {
-    response.status(500).json({ message: "Erro no servidor" });
+    response.status(500).json({ message: "JWT_SECRET not set" });
     return;
   }
   try {
@@ -16,7 +16,7 @@ export const authMiddleware = (
     request.user = decoded;
     next();
   } catch (error) {
-    response.status(401).json({ message: "Usuario não autenticado" });
+    response.status(401).json({ message: "Usuário não autenticado" });
     return;
   }
 };
