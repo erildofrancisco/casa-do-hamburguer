@@ -75,7 +75,7 @@ export function Product({
           </p>
           <div className="flex items-center justify-end gap-2">
             <p className="text-sm text-[#F2DAAC]">{formatterPrice(price)}</p>
-            <ShoppingCart size={18} className="text-white" />
+            <ShoppingCart size={18} className="text-white cursor-pointer" />
           </div>
         </div>
       </div>
