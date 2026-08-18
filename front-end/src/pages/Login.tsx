@@ -11,7 +11,7 @@ export function Login() {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
-  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       if (!email || !password) {
