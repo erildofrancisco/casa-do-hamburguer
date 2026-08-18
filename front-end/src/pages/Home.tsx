@@ -54,8 +54,8 @@ export function Home() {
     <div className="mx-auto w-full px-3 md:w-184.25 md:px-0">
       <div className="my-1 flex gap-2 md:my-3">
         <div
-          className={getCategoryClass("Hambuguers")}
-          onClick={() => handleChangeCategory("Hambuguers")}
+          className={getCategoryClass("Hamburguers")}
+          onClick={() => handleChangeCategory("Hamburguers")}
         >
           Hamburguer
         </div>
