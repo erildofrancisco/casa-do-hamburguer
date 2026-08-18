@@ -30,7 +30,7 @@ export const login = async (request: Request, response: Response) => {
       admin: user.admin,
     };
     if (!process.env.JWT_SECRET) {
-      return;
+      return response.status(500).json({ message: "JWT_SECRET not set" });
     }
     const token = Jwt.sign(userInfos, process.env.JWT_SECRET);
     response.cookie("user", token, {
