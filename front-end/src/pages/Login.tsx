@@ -70,6 +70,7 @@ export function Login() {
           <Input
             placeholder="Senha"
             onChange={(e) => setPassword(e.target.value)}
+            type="password"
           />
           <p className="text-sm font-bold text-red-500">{error}</p>
         </div>
