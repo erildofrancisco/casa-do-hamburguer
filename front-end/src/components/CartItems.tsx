@@ -1,4 +1,4 @@
-import { ChevronLeft, Trash } from "lucide-react";
+import { ChevronLeft, ChevronRight, Trash } from "lucide-react";
 import { formatterPrice } from "../utils/formatter";
 
 type cartItemsProps = {
@@ -41,9 +41,9 @@ export const CartItems = ({ name, price, img, id }: cartItemsProps) => {
             className="cursor-pointer rounded-md bg-[#C92A0E] p-1 text-white"
           />
           <p className="font-black">1</p>
-          <ChevronLeft
+          <ChevronRight
             size={25}
-            className="rotate-150 cursor-pointer rounded-md bg-[#C92A0E] p-1 text-white"
+            className="cursor-pointer rounded-md bg-[#C92A0E] p-1 text-white"
           />
         </div>
       </div>
